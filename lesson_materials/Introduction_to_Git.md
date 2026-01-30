@@ -46,6 +46,11 @@ git config --list
 - Your name and email should be displayed when you run the verification commands
 - The `git config --list` command shows all your Git configuration settings
 
+### Key Concepts:
+- Git configuration is stored globally on your machine
+- This identity information appears in every commit you make
+- You only need to do this setup once per machine
+
 ## Section 2: Initialize a New Git Repository
 
 Let's create a new Git repository from scratch. This involves creating a directory and initializing it with Git.
@@ -67,10 +72,14 @@ ls -la
 # On Windows: dir /a
 ```
 
-### What Happens:
+### Expected Output:
 - A new `.git` directory is created (this is where Git stores all version control information)
 - Your directory is now a Git repository
+
+### Key Concepts:
 - The `.git` directory contains subdirectories like `objects`, `refs`, `hooks`, etc.
+- This hidden directory is what makes your folder a Git repository
+- Without the `.git` directory, it's just a regular folder
 
 ## Section 3: Create and Stage Files
 
@@ -116,6 +125,11 @@ git status
 - First `git status`: Shows `main.py` as an untracked file in red
 - After `git add`: Shows `main.py` as staged for commit in green
 
+### Key Concepts:
+- The staging area is a middle step between your working directory and commits
+- You can choose which files to include in each commit
+- Staged files are ready to be committed
+
 ## Section 4: Make Your First Commit
 
 A commit is a snapshot of your repository at a specific point in time. Let's create our first commit!
@@ -141,7 +155,12 @@ git status
 - `git log` shows your commit with author, date, and message
 - `git status` shows "nothing to commit, working tree clean"
 
-### Good Commit Message Practices:
+### Key Concepts:
+- Commits create permanent snapshots of your staged changes
+- Each commit has a unique ID (hash) and metadata
+- Good commit messages help track project history
+
+#### Good Commit Message Practices:
 - Use present tense ("Add feature" not "Added feature")
 - Be descriptive but concise
 - First line should be 50 characters or less
@@ -379,16 +398,22 @@ git branch
 git branch -a
 ```
 
-### Branch Naming Conventions:
+### Expected Output:
+- `git branch` shows your current branch with an asterisk (*)
+- After creating the branch, you'll be on `feature/refactor-calculator`
+- The new branch appears in the branch list
+
+### Key Concepts:
+- Branches let you work on features in isolation
+- You can switch between branches without losing work
+- The main/master branch remains untouched while you experiment
+
+#### Branch Naming Conventions:
 - `feature/description` - for new features
 - `bugfix/description` - for bug fixes
 - `hotfix/description` - for urgent fixes
 - Use hyphens instead of spaces
 - Be descriptive but concise
-
-### Expected Output:
-- `git branch` shows your current branch with an asterisk (*)
-- After creating the branch, you'll be on `feature/refactor-calculator`
 
 ## Section 8: Modify Files and Create Commits on Branch
 
@@ -505,7 +530,12 @@ git branch -a
 - You'll see the branch listed in remote branches
 - The branch will be visible on GitHub/GitLab in the web interface
 
-### Benefits of Pushing Branches:
+### Key Concepts:
+- Pushing branches backs up your work in the cloud
+- Remote branches allow team collaboration
+- The `-u` flag sets up tracking between local and remote branches
+
+#### Benefits of Pushing Branches:
 - Backup your work in the cloud
 - Allow team members to review your code
 - Enable collaboration on the feature

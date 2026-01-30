@@ -1,118 +1,51 @@
-"""
-    Add two numbers together.
+# Hard-coded basic calculator without functions
+# Example calculations with two sets of numbers
 
-    Args:
-        x (int | float): The first number to add
-        y (int | float): The second number to add
+# First set of calculations
+x = 10
+y = 3
 
-    Returns:
-        int | float: The sum of x and y
-    """
-    return x + y
+print("=== Basic Calculator Demo ===")
+print(f"Numbers: x = {x}, y = {y}")
+print(f"Addition: {x} + {y} = {x + y}")
+print(f"Subtraction: {x} - {y} = {x - y}")
+print(f"Multiplication: {x} * {y} = {x * y}")
+print(f"Division: {x} / {y} = {x / y}")
 
+# Second set of calculations with division by zero handling
+x2 = 10
+y2 = 0
 
-def subtract(x, y):
-    """
-    Subtract the second number from the first.
+print("\n=== Division by Zero Demo ===")
+print(f"Numbers: x = {x2}, y = {y2}")
+print(f"Addition: {x2} + {y2} = {x2 + y2}")
+print(f"Subtraction: {x2} - {y2} = {x2 - y2}")
+print(f"Multiplication: {x2} * {y2} = {x2 * y2}")
 
-    Args:
-        x (int | float): The number to subtract from
-        y (int | float): The number to subtract
+# Handle division by zero
+if y2 == 0:
+    print("Division: Cannot divide by zero")
+else:
+    print(f"Division: {x2} / {y2} = {x2 / y2}")
 
-    Returns:
-        int | float: The difference of x and y
-    """
-    return x - y
+# Additional examples with different numbers
+x3 = 15
+y3 = 4
 
+print("\n=== Additional Examples ===")
+print(f"Numbers: x = {x3}, y = {y3}")
+print(f"Addition: {x3} + {y3} = {x3 + y3}")
+print(f"Subtraction: {x3} - {y3} = {x3 - y3}")
+print(f"Multiplication: {x3} * {y3} = {x3 * y3}")
+print(f"Division: {x3} / {y3} = {x3 / y3}")
 
-def multiply(x, y):
-    """
-    Multiply two numbers together.
+# Decimal examples
+x4 = 7.5
+y4 = 2.5
 
-    Args:
-        x (int | float): The first number to multiply
-        y (int | float): The second number to multiply
-
-    Returns:
-        int | float: The product of x and y
-    """
-    return x * y
-
-
-def divide(x, y):
-    """
-    Divide the first number by the second.
-
-    Args:
-        x (int | float): The dividend
-        y (int | float): The divisor
-
-    Returns:
-        float: The quotient of x divided by y
-
-    Raises:
-        ZeroDivisionError: If y is zero
-    """
-    if y == 0:
-        raise ZeroDivisionError("Cannot divide by zero")
-    return x / y
-
-
-def calculate_and_display(x, y):
-    """
-    Perform basic arithmetic operations and display results.
-
-    Args:
-        x (int | float): The first number
-        y (int | float): The second number
-    """
-    print(f"Numbers: x = {x}, y = {y}")
-    print(f"Addition: {x} + {y} = {add(x, y)}")
-    print(f"Subtraction: {x} - {y} = {subtract(x, y)}")
-    print(f"Multiplication: {x} * {y} = {multiply(x, y)}")
-
-    try:
-        result = divide(x, y)
-        print(f"Division: {x} / {y} = {result}")
-    except ZeroDivisionError as e:
-        print(f"Division: {e}")
-
-
-def get_number_input(prompt):
-    """
-    Get numeric input from user with automatic int/float conversion.
-
-    Args:
-        prompt (str): The prompt message to display to the user
-
-    Returns:
-        int | float: The numeric value entered by the user
-
-    Raises:
-        ValueError: If the input cannot be converted to a number
-    """
-    user_input = input(prompt)
-    # Try to convert to int first, then float
-    try:
-        return int(user_input)
-    except ValueError:
-        return float(user_input)
-
-
-def main():
-    """
-    Main function to demonstrate basic arithmetic operations.
-    """
-    # Get user input and convert to numeric types
-    try:
-        x = get_number_input("Enter the first number (x): ")
-        y = get_number_input("Enter the second number (y): ")
-    except ValueError:
-        print("Error: Please enter valid numbers.")
-        return
-
-    print("=== Basic Calculator Demo ===")
-    calculate_and_display(x, y)
-
-if __name__ == "__main__":
-    main()
+print("\n=== Decimal Examples ===")
+print(f"Numbers: x = {x4}, y = {y4}")
+print(f"Addition: {x4} + {y4} = {x4 + y4}")
+print(f"Subtraction: {x4} - {y4} = {x4 - y4}")
+print(f"Multiplication: {x4} * {y4} = {x4 * y4}")
+print(f"Division: {x4} / {y4} = {x4 / y4}")

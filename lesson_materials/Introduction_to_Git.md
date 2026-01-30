@@ -21,7 +21,7 @@ By the end of this workshop, you'll be able to:
 
 Let's get started!
 
-## Section 1: Set Up Git Configuration
+## Section 1: Set Up Git Configuration (1 of 12)
 
 Before using Git, you need to configure your identity. This information will be associated with your commits.
 
@@ -51,7 +51,7 @@ git config --list
 - This identity information appears in every commit you make
 - You only need to do this setup once per machine
 
-## Section 2: Initialize a New Git Repository
+## Section 2: Initialize a New Git Repository (2 of 12)
 
 Let's create a new Git repository from scratch. This involves creating a directory and initializing it with Git.
 
@@ -81,7 +81,7 @@ ls -la
 - This hidden directory is what makes your folder a Git repository
 - Without the `.git` directory, it's just a regular folder
 
-## Section 3: Create and Stage Files
+## Section 3: Create and Stage Files (3 of 12)
 
 Now let's create our first Python file and learn how to stage files for commit.
 
@@ -130,7 +130,7 @@ git status
 - You can choose which files to include in each commit
 - Staged files are ready to be committed
 
-## Section 4: Make Your First Commit
+## Section 4: Make Your First Commit (4 of 12)
 
 A commit is a snapshot of your repository at a specific point in time. Let's create our first commit!
 
@@ -166,7 +166,7 @@ git status
 - First line should be 50 characters or less
 - Use imperative mood ("Fix bug" not "Fixes bug")
 
-## Section 5: Choose Your Remote Repository Setup
+## Section 5: Choose Your Remote Repository Setup (5 of 12)
 
 Remote repositories allow you to collaborate with others and backup your code. Before connecting to a remote, you need to choose your approach and set up authentication.
 
@@ -304,7 +304,7 @@ git remote set-url origin https://github.com/username/repository.git
 git ls-remote origin
 ```
 
-## Section 6: Clone or Link to Your Remote Repository
+## Section 6: Clone or Link to Your Remote Repository (6 of 12)
 
 Now it's time to connect your local work with the remote repository. Choose the approach that matches your setup from Section 5.
 
@@ -375,7 +375,25 @@ git branch -a
 
 **Note**: You may need to authenticate using the Personal Access Token or SSH key from Section 5.
 
-## Section 7: Create and Switch to a New Branch
+---
+
+### 🚨 Important: Your Path Forward
+
+**If you chose Option A (created new repository):**
+- In Section 6, follow the "If You Created a New Repository" instructions
+- You'll work with your own `main.py` file created in earlier sections
+- In Section 8, you'll refactor the calculator code yourself
+
+**If you chose Option B (forked workshop repository):**
+- In Section 6, follow the "If You Forked the Workshop Repository" instructions
+- You'll work with the existing workshop files
+- In Section 8, you can reference the provided `main_updated.py` as a guide
+
+**All other sections (7, 9-12)** work the same regardless of your choice.
+
+## Section 7: Create and Switch to a New Branch (7 of 12)
+
+> **Path Note**: This section works the same regardless of whether you chose Option A or B in Section 5.
 
 Branching allows you to work on features without affecting the main codebase. This is essential for safe collaborative development.
 
@@ -415,7 +433,11 @@ git branch -a
 - Use hyphens instead of spaces
 - Be descriptive but concise
 
-## Section 8: Modify Files and Create Commits on Branch
+## Section 8: Modify Files and Create Commits on Branch (8 of 12)
+
+> **Path Note**:
+> - **Option A users**: Update your `main.py` with the improved code below
+> - **Option B users**: You can reference the provided `main_updated.py` file for guidance
 
 Now let's refactor our main.py file to use the improved code structure, demonstrating how to work on features in separate branches.
 
@@ -505,7 +527,7 @@ git log --oneline
 - Included error handling
 - Better code organization
 
-## Section 9: Push Branch to Remote Repository
+## Section 9: Push Branch to Remote Repository (9 of 12)
 
 Now let's push our feature branch to the remote repository so others can see our work.
 
@@ -541,7 +563,11 @@ git branch -a
 - Enable collaboration on the feature
 - Create pull requests for code review
 
-## Section 10: Create a Pull Request
+## Section 10: Create a Pull Request (10 of 12)
+
+> **Path Note**:
+> - **Option A users**: Create PR to your own repository's main branch
+> - **Option B users**: Create PR to your fork's main branch (not the original workshop repo)
 
 Pull requests (or merge requests in GitLab) are how you propose changes to be merged into the main branch. This enables code review and discussion.
 
@@ -586,7 +612,7 @@ gh pr create --title "Refactor calculator with functions and input validation" -
 gh pr list
 ```
 
-## Section 11: Review and Merge the Pull Request
+## Section 11: Review and Merge the Pull Request (11 of 12)
 
 This section covers the review process and merging the pull request into the main branch.
 
@@ -646,7 +672,7 @@ git merge feature/refactor-calculator
 git push origin main
 ```
 
-## Section 12: Clean Up and Pull Latest Changes
+## Section 12: Clean Up and Pull Latest Changes (12 of 12)
 
 After merging, it's good practice to clean up branches and ensure your local repository is up to date.
 

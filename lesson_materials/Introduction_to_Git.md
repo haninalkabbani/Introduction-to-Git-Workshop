@@ -147,9 +147,9 @@ git status
 - First line should be 50 characters or less
 - Use imperative mood ("Fix bug" not "Fixes bug")
 
-## Section 5: Connect to a Remote Repository
+## Section 5: Choose Your Remote Repository Setup
 
-Remote repositories allow you to collaborate with others and backup your code. Let's learn how to connect to a remote.
+Remote repositories allow you to collaborate with others and backup your code. Before connecting to a remote, you need to choose your approach and set up authentication.
 
 ### Setup (Choose One):
 
@@ -159,6 +159,7 @@ Remote repositories allow you to collaborate with others and backup your code. L
 3. Name it "git-workshop-demo"
 4. Don't initialize with README (we already have content)
 5. Copy the repository URL
+6. **Next step**: You'll link your local repository to this remote in Section 6
 
 **Option B: Use this workshop's repository:**
 1. Go to github.com/Revolution-Data-Platforms/Introduction-to-Git-Workshop
@@ -166,6 +167,7 @@ Remote repositories allow you to collaborate with others and backup your code. L
 3. This creates your own copy of the repository under your GitHub account
 4. Use your forked repository URL for the exercises
 5. **Important**: Don't clone the original repository directly - always fork first so you have write permissions
+6. **Next step**: You'll clone your forked repository in Section 6
 
 ### Authenticating Git with GitHub
 
@@ -283,7 +285,15 @@ git remote set-url origin https://github.com/username/repository.git
 git ls-remote origin
 ```
 
-### Commands to Run:
+## Section 6: Clone or Link to Your Remote Repository
+
+Now that you've chosen your repository setup and configured authentication, it's time to connect your local work with the remote repository. The approach depends on which option you chose in Section 5.
+
+### Approach A: Link Your Local Repository to a New Remote (Option A from Section 5)
+
+If you created a new repository on GitHub, you need to link your existing local repository to it.
+
+#### Commands to Run:
 
 ```bash
 # Add remote origin (replace with your repository URL)
@@ -297,48 +307,64 @@ git push -u origin main
 # Note: Some repositories use 'master' instead of 'main'
 ```
 
-### Authentication:
-- You may need to authenticate with GitHub
-- Use personal access tokens or SSH keys for authentication
-- GitHub no longer accepts passwords for Git operations
+#### What Happens:
+- Your local repository is linked to the remote repository
+- The remote is named "origin" (standard convention)
+- Your commits are uploaded to GitHub
+- Future pushes will go to this remote repository
 
-### Expected Output:
-- `git remote -v` shows your origin URL for both fetch and push
-- `git push` uploads your commits to the remote repository
+### Approach B: Clone Your Forked Repository (Option B from Section 5)
 
-## Section 6: Clone an Existing Repository
+If you forked the workshop repository, you need to clone your fork and work within that directory.
 
-Cloning creates a local copy of a remote repository. This is how you'd typically start working on an existing project.
-
-### Commands to Run:
+#### Commands to Run:
 
 ```bash
-# Navigate to a different directory
+# Navigate to a different directory (outside your current repo)
 cd ..
 
-# Clone a repository (replace with actual repository URL)
-git clone https://github.com/Revolution-Data-Platforms/Introduction-to-Git-Workshop.git workshop-clone
+# Clone your forked repository (replace with your fork's URL)
+git clone https://github.com/your-username/Introduction-to-Git-Workshop.git workshop-clone
 
 # Navigate into the cloned repository
 cd workshop-clone
 
-# Explore the repository
+# Explore the repository structure
 ls -la
 git log --oneline
 git remote -v
 git branch -a
 ```
 
-### What Happens:
-- Git downloads the entire repository history
+#### What Happens:
+- Git downloads the entire repository history from your fork
 - A new directory is created with the repository name
-- The remote "origin" is automatically configured
+- The remote "origin" is automatically configured to point to your fork
 - You get a complete working copy of the project
 
-### When to Clone:
-- Starting work on an existing project
-- Contributing to open source projects
-- Creating a backup or working on multiple machines
+### Key Differences Between the Approaches
+
+| Aspect             | Link Local to Remote (Option A)      | Clone Forked Repository (Option B) |
+| ------------------ | ------------------------------------ | ---------------------------------- |
+| **Starting Point** | Your existing local repository       | Empty local directory              |
+| **Content**        | Your work from previous sections     | Pre-existing workshop content      |
+| **Remote Setup**   | Manual `git remote add`              | Automatic during clone             |
+| **Initial Push**   | Required (`git push -u origin main`) | Not needed initially               |
+| **Best For**       | Learning from scratch                | Working with existing projects     |
+| **Next Steps**     | Continue with your main.py           | Start from existing files          |
+
+### Authentication Notes:
+- You may need to authenticate with GitHub during push/clone operations
+- Use the Personal Access Token or SSH key you set up in Section 5
+- GitHub no longer accepts passwords for Git operations
+
+### Expected Output:
+- **Option A**: `git remote -v` shows your origin URL, `git push` uploads your commits
+- **Option B**: Clone downloads files, `git remote -v` shows your fork URL
+
+### When to Use Each Approach:
+- **Link Local to Remote**: Building a project from scratch, learning Git basics
+- **Clone Repository**: Contributing to existing projects, working on team repositories
 
 ## Section 7: Create and Switch to a New Branch
 

@@ -11,6 +11,7 @@ This workshop provides a complete introduction to Git, covering everything from 
 By completing this workshop, you will be able to:
 
 - Configure Git on your local machine
+- Set up authentication with GitHub (Personal Access Tokens and SSH keys)
 - Create and initialize Git repositories
 - Make commits and track changes over time
 - Work with remote repositories (GitHub/GitLab)
@@ -27,7 +28,7 @@ The workshop is organized into 12 progressive sections:
 2. **Initialize a New Git Repository** - Create repositories from scratch
 3. **Create and Stage Files** - Learn the staging process
 4. **Make Your First Commit** - Create snapshots of your work
-5. **Connect to a Remote Repository** - Link local and remote repos
+5. **Connect to a Remote Repository** - Link local and remote repos, including GitHub authentication setup
 6. **Clone an Existing Repository** - Work with existing projects
 7. **Create and Switch to a New Branch** - Feature branch workflows
 8. **Modify Files and Create Commits on Branch** - Practical refactoring exercise
@@ -44,6 +45,7 @@ Before starting this workshop, ensure you have:
 - Git installed on your machine
 - A text editor of your choice (VS Code, nano, vim, etc.)
 - A GitHub account (for remote repository exercises)
+- Ability to create Personal Access Tokens or SSH keys for GitHub authentication
 
 ## Files in This Repository
 
@@ -119,7 +121,8 @@ This exercise demonstrates real-world Git workflows including:
 ### Remote Repositories
 - Origin and upstream concepts
 - Push and pull operations
-- Authentication and security
+- GitHub authentication methods (Personal Access Tokens vs SSH keys)
+- Authentication setup and troubleshooting
 - Collaborative workflows
 
 ### Best Practices

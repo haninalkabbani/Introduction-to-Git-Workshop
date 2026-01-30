@@ -161,7 +161,11 @@ Remote repositories allow you to collaborate with others and backup your code. L
 5. Copy the repository URL
 
 **Option B: Use this workshop's repository:**
-- Fork the Introduction-to-Git-Workshop repository
+1. Go to github.com/Revolution-Data-Platforms/Introduction-to-Git-Workshop
+2. Click "Fork" button (top right of the repository page)
+3. This creates your own copy of the repository under your GitHub account
+4. Use your forked repository URL for the exercises
+5. **Important**: Don't clone the original repository directly - always fork first so you have write permissions
 
 ### Authenticating Git with GitHub
 

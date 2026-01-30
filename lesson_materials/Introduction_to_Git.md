@@ -163,6 +163,122 @@ Remote repositories allow you to collaborate with others and backup your code. L
 **Option B: Use this workshop's repository:**
 - Fork the Introduction-to-Git-Workshop repository
 
+### Authenticating Git with GitHub
+
+Before you can push to or pull from GitHub, you need to authenticate your Git client. GitHub no longer accepts passwords for Git operations as of August 2021. Here are the recommended authentication methods:
+
+#### Option 1: Personal Access Token (HTTPS)
+
+**Step 1: Create a Personal Access Token**
+1. Go to GitHub.com and log in
+2. Click your profile picture → Settings
+3. Scroll down to "Developer settings" in the left sidebar
+4. Click "Personal access tokens" → "Tokens (classic)"
+5. Click "Generate new token" → "Generate new token (classic)"
+6. Give it a descriptive name like "Git Workshop Token"
+7. Set expiration (30 days recommended for learning)
+8. Select scopes: at minimum check "repo" for repository access
+9. Click "Generate token"
+10. **Important**: Copy the token immediately (you won't see it again!)
+
+**Step 2: Configure Git to use the token**
+```bash
+# When prompted for password during git operations, use your token instead
+# Or configure Git to store credentials (cache for 15 minutes)
+git config --global credential.helper cache
+
+# For longer caching (cache for 1 hour)
+git config --global credential.helper 'cache --timeout=3600'
+
+# On Windows, you can use the credential manager
+git config --global credential.helper manager-core
+```
+
+#### Personal Access Token vs SSH Key: Quick Comparison
+
+| Aspect               | Personal Access Token (HTTPS)      | SSH Key                               |
+| -------------------- | ---------------------------------- | ------------------------------------- |
+| **Setup Complexity** | Simple - just create token         | Moderate - generate key pair          |
+| **Security**         | Good - token can be scoped         | Excellent - public key cryptography   |
+| **Convenience**      | Need to enter token periodically   | Seamless after setup (with ssh-agent) |
+| **Firewall/Proxy**   | Works through corporate firewalls  | May be blocked (port 22)              |
+| **Expiration**       | Tokens expire (security feature)   | Keys don't expire automatically       |
+| **Portability**      | Easy to use on multiple machines   | Need to copy private key securely     |
+| **Best for**         | Temporary access, CI/CD, beginners | Daily development, experienced users  |
+
+**Quick Recommendation:**
+- **New to Git?** Start with Personal Access Token (easier setup)
+- **Regular developer?** Use SSH keys (better long-term experience)
+- **Corporate environment?** Check with IT - some block SSH, prefer HTTPS
+
+#### Option 2: SSH Key (Recommended for regular use)
+
+**Step 1: Generate SSH Key**
+```bash
+# Generate a new SSH key (replace with your GitHub email)
+ssh-keygen -t ed25519 -C "your.email@example.com"
+
+# When prompted for file location, press Enter for default
+# When prompted for passphrase, you can enter one or leave blank
+
+# Start the ssh-agent
+eval "$(ssh-agent -s)"
+# On Windows Git Bash: eval `ssh-agent -s`
+
+# Add your SSH private key to the ssh-agent
+ssh-add ~/.ssh/id_ed25519
+```
+
+**Step 2: Add SSH Key to GitHub**
+```bash
+# Copy your public key to clipboard
+cat ~/.ssh/id_ed25519.pub
+# On Windows: type %USERPROFILE%\.ssh\id_ed25519.pub
+# On Mac: pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+1. Go to GitHub.com → Settings → SSH and GPG keys
+2. Click "New SSH key"
+3. Give it a title like "My Laptop - Git Workshop"
+4. Paste your public key into the "Key" field
+5. Click "Add SSH key"
+
+**Step 3: Test SSH Connection**
+```bash
+# Test your SSH connection
+ssh -T git@github.com
+
+# You should see: "Hi username! You've successfully authenticated..."
+```
+
+**Step 4: Use SSH URLs for repositories**
+```bash
+# Use SSH URLs instead of HTTPS (format: git@github.com:username/repo.git)
+git remote add origin git@github.com:your-username/git-workshop-demo.git
+```
+
+#### Authentication Troubleshooting
+
+**Common Issues:**
+- **"Authentication failed"**: Check if your token/SSH key is correct
+- **"Permission denied"**: Verify you have write access to the repository
+- **"Host key verification failed"**: Run `ssh -T git@github.com` and accept the host key
+
+**Helpful Commands:**
+```bash
+# Check current remote URL
+git remote -v
+
+# Change from HTTPS to SSH
+git remote set-url origin git@github.com:username/repository.git
+
+# Change from SSH to HTTPS
+git remote set-url origin https://github.com/username/repository.git
+
+# Test Git credentials
+git ls-remote origin
+```
+
 ### Commands to Run:
 
 ```bash
